@@ -9,6 +9,8 @@ router = APIRouter(
     responses={404: {"message": "Not found"}}
 )
 
+reverseip_service = ReverseIPService()
+
 @router.post("/get_lookup")
 async def get_lookup(data: ReverseIPSchema = Depends(ReverseIPSchema)):
-    return ReverseIPService().get_lookup(data.ip_address)
+    return reverseip_service.get_lookup(data.ip_address)
